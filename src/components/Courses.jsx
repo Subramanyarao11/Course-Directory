@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import axios from "axios";
 import useSwr from "swr";
+import { mutate } from "swr"
 import Header from './Header';
 import Loader from './Loader';
 import Errorpage from './Errorpage';
@@ -21,7 +22,7 @@ export default function () {
 
     const deleteCourse = async (courseId) => {
         await axios.delete(`${url}/${courseId}`);
-        mutate("courses");
+        mutate('courses');
     };
 
     return (
